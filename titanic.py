@@ -2,16 +2,15 @@
 # coding: utf-8
 """
 author -- ToxaZ
+
+Couresera Machine Learning Introduction 2nd week assignement
+1 - https://www.coursera.org/learn/vvedenie-mashinnoe-obuchenie/programming/u08ys/priedobrabotka-dannykh-v-pandas
+2 - https://www.coursera.org/learn/vvedenie-mashinnoe-obuchenie/programming/DVbEI/vazhnost-priznakov
 """
 import pandas as pd
 import numpy as np
+from utils import write_submission
 from sklearn.tree import DecisionTreeClassifier
-
-
-def write_submission(result, filename):
-    '''write results in proper Coursera format'''
-    with open('submissions/{}'.format(filename), 'w') as f:
-            f.write(str(result))
 
 
 def pandas_assignment():
@@ -51,7 +50,9 @@ def pandas_assignment():
 def trees_assignment():
     data = pd.read_csv('titanic.csv', index_col='PassengerId')
     data21 = data.dropna(subset=['Pclass', 'Fare', 'Age', 'Survived', 'Sex'])
+    pd.options.mode.chained_assignment = None  # suppress false positive warn
     data21['Sex'] = data21['Sex'].map({'female': 0, 'male': 1})
+    pd.options.mode.chained_assignment = 'warn'  # turning warn back
     feature_names = ['Pclass', 'Fare', 'Age', 'Sex']
     X = data21[feature_names]
     y = data21[['Survived']]
@@ -68,7 +69,7 @@ def trees_assignment():
 
 
 def main():
-    pandas_assignment
+    pandas_assignment()
     trees_assignment()
 
 

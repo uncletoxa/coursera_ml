@@ -4,3 +4,5 @@ lib/*
 local/*
 submissions/*
 pip-selfcheck.json
+*.csv
+*.data
