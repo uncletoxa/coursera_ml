@@ -26,7 +26,8 @@ def main():
     scaler = StandardScaler()
 
     for data_type in ['train', 'test']:
-        df = pd.read_csv('perceptron-{0}.csv'.format(data_type), header=None)
+        df = pd.read_csv('data/perceptron-{0}.csv'.format(data_type),
+                         header=None)
         data['X_' + data_type] = df.iloc[:, 1:].values
         data['y_' + data_type] = df.iloc[:, 0].values
 

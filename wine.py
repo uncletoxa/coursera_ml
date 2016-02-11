@@ -16,7 +16,7 @@ from utils import write_submission, classifier_choice_cv
 
 
 def main():
-    wine_file = 'wine.data'
+    wine_file = 'data/wine.data'
     url = 'https://archive.ics.uci.edu/ml/machine-learning-databases/wine/wine.data'
     try:
         data = pd.read_csv(wine_file, header=None)

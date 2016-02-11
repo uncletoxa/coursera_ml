@@ -3,7 +3,7 @@
 """
 author -- ToxaZ
 
-Couresera Machine Learning Introduction 2nd week assignement
+Coursera Machine Learning Introduction 2nd week assignement
 4 - https://www.coursera.org/learn/vvedenie-mashinnoe-obuchenie/programming/gXjdV/vybor-mietriki
 """
 import numpy as np

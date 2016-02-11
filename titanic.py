@@ -14,7 +14,7 @@ from sklearn.tree import DecisionTreeClassifier
 
 
 def pandas_assignment():
-    data = pd.read_csv('titanic.csv', index_col='PassengerId')
+    data = pd.read_csv('data/titanic.csv', index_col='PassengerId')
 
     subm11 = data['Sex'].value_counts()
     write_submission(
@@ -48,7 +48,7 @@ def pandas_assignment():
 
 
 def trees_assignment():
-    data = pd.read_csv('titanic.csv', index_col='PassengerId')
+    data = pd.read_csv('data/titanic.csv', index_col='PassengerId')
     data21 = data.dropna(subset=['Pclass', 'Fare', 'Age', 'Survived', 'Sex'])
     pd.options.mode.chained_assignment = None  # suppress false positive warn
     data21['Sex'] = data21['Sex'].map({'female': 0, 'male': 1})
@@ -63,9 +63,7 @@ def trees_assignment():
     indices = np.argsort(importances)[::-1]
     subm21 = [feature_names[f] for f in indices][:2]
 
-    write_submission(
-        ' '.join([str(x) for x in subm21]),
-        '21')
+    write_submission([x for x in subm21], '21')
 
 
 def main():
