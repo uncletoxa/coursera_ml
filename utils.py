@@ -12,8 +12,8 @@ from sklearn.cross_validation import cross_val_score
 def write_submission(result, filename):
     '''write results in proper Coursera format'''
     with open('submissions/{}'.format(filename), 'w') as f:
-            result = ''.join(c for c in str(result) if c not in '[](){}<>,\'')
-            f.write(str(result))
+            result = str(result).translate(None, '[](){}<>,')
+            f.write(result)
     print '"{0}" has been written to submissions/{1}'.format(result, filename)
 
 
