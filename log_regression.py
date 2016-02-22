@@ -15,9 +15,17 @@ from sklearn.metrics import roc_auc_score
 from utils import write_submission
 
 
-def create_gradient_descent(X, y, weights,
+import pandas as pd
+import numpy as np
+import math
+from sys import maxint
+from sklearn.metrics import roc_auc_score
+from utils import write_submission
+
+
+def create_gradient_descent(X, y, weights, k_step,
                             e_distance, iterations_count=maxint,
-                            reg_coef=0, k_step=0, regularization=False):
+                            reg_coef=None, regularization=False):
 
     def update_weights(X, y, weights, reg_coef, k_step, regularization):
         dp = np.einsum('ij,j->i', X, weights[-1])
@@ -62,13 +70,13 @@ def main():
     iterations_max = 10000
 
     weights_matrix = create_gradient_descent(
-        X, y, start_weights,
+        X, y, start_weights, reg_step,
         euclidean_distance, iterations_max
     )
     reg_weights_matrix = create_gradient_descent(
-        X, y, start_weights,
+        X, y, start_weights, reg_step,
         euclidean_distance, iterations_max,
-        reg_coef, reg_step, regularization=True
+        reg_coef, regularization=True
     )
 
     y_scores = [sigmoid(X[i], weights_matrix[-1]) for i in xrange(len(X))]
