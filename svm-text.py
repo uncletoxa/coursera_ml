@@ -7,7 +7,6 @@ Coursera Machine Learning Introduction 3nd week assignement
 7 - https://www.coursera.org/learn/vvedenie-mashinnoe-obuchenie/programming/NdyLO/analiz-tiekstov
 """
 
-from __future__ import unicode_literals
 import numpy as np
 import logging
 from sklearn.svm import SVC
